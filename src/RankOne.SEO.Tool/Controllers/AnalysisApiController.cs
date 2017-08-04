@@ -4,11 +4,11 @@ using System.Net.Http;
 using System.Web.Http;
 using RankOne.Interfaces;
 using RankOne.Models;
-using RankOne.Services;
 using Umbraco.Core.Logging;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
+using RankOne.IOC;
 
 namespace RankOne.Controllers
 {
@@ -17,9 +17,6 @@ namespace RankOne.Controllers
     {
         private readonly IAnalyzeService _analyzeService;
         private readonly UmbracoHelper _umbracoHelper;
-
-        public AnalysisApiController() : this(new AnalyzeService())
-        { }
 
         public AnalysisApiController(IAnalyzeService analyzeService)
         {

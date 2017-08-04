@@ -11,13 +11,13 @@ namespace RankOne.Services
     {
         private readonly FocusKeywordHelper _focusKeywordHelper;
         private readonly PageAnalysisService _pageAnalysisService;
-        private readonly AnalysisCacheRepository _analysisCacheService;
+        private readonly IAnalysisCacheRepository _analysisCacheService;
 
-        public AnalyzeService()
+        public AnalyzeService(IAnalysisCacheRepository analysisCacheRepository)
         {
             _focusKeywordHelper = new FocusKeywordHelper();
             _pageAnalysisService = new PageAnalysisService();
-            _analysisCacheService = new AnalysisCacheRepository();
+            _analysisCacheService = analysisCacheRepository;
         }
 
         public PageAnalysis CreateAnalysis(IPublishedContent node, string focusKeyword = null)

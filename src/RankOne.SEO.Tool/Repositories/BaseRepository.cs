@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using RankOne.Helpers;
 using RankOne.Interfaces;
-using RankOne.Models;
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
+using RankOne.IOC;
 
 namespace RankOne.Repositories
 {
-    public class BaseRepository<T> where T : BaseDatabaseObject
+    public class BaseRepository<T> : IBaseRepository<T>
     {
         private string _tableName;
         private ITableNameHelper<T> _tableNameHelper;
@@ -41,10 +40,10 @@ namespace RankOne.Repositories
             }
         }
 
-        public BaseRepository(DatabaseContext context)
+        public BaseRepository(RankOneContext rankOneContext)
         {
-            DatabaseContext = context;
-            Database = context.Database;
+            DatabaseContext = rankOneContext.DatabaseContext;
+            Database = DatabaseContext.Database;
         }
 
         public virtual T GetById(int id)

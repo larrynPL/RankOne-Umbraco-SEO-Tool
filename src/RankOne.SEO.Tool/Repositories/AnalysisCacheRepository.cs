@@ -1,18 +1,18 @@
-﻿using System;
-using System.Web.Script.Serialization;
+﻿using RankOne.Interfaces;
 using RankOne.Models;
+using System;
 
 namespace RankOne.Repositories
 {
-    public class AnalysisCacheRepository
+    public class AnalysisCacheRepository : IAnalysisCacheRepository
     {
-        private readonly NodeReportRepository _nodeReportRepository;
-        private readonly JavaScriptSerializer _javaScriptSerializer;
+        private readonly INodeReportRepository _nodeReportRepository;
+        private readonly IPageScoreSerializer _javaScriptSerializer;
 
-        public AnalysisCacheRepository()
+        public AnalysisCacheRepository(INodeReportRepository nodeReportRepository, IPageScoreSerializer pageScoreSerializer)
         {
-            _nodeReportRepository = new NodeReportRepository();
-            _javaScriptSerializer = new JavaScriptSerializer();
+            _nodeReportRepository = nodeReportRepository;
+            _javaScriptSerializer = pageScoreSerializer;
         }
 
         public void Save(int id, PageAnalysis pageAnalysis)

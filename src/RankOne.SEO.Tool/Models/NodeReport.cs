@@ -6,7 +6,7 @@ namespace RankOne.Models
 {
     [TableName("NodeReport")]
     [PrimaryKey("Id", autoIncrement = false)]
-    public class NodeReport : BaseDatabaseObject
+    public class NodeReport
     {
         [PrimaryKeyColumn(AutoIncrement = false)]
         public int Id { get; set; }

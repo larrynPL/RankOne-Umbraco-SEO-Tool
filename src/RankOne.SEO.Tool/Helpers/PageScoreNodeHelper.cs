@@ -21,9 +21,9 @@ namespace RankOne.Helpers
         public PageScoreNodeHelper()
         {
             _umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-            _nodeReportRepository = new NodeReportRepository();
+            _nodeReportRepository = new NodeReportRepository(new IOC.RankOneContext());
             _javascriptSerializer = new JavaScriptSerializer();
-            _analyzeService = new AnalyzeService();
+            _analyzeService = new AnalyzeService(new AnalysisCacheRepository(new NodeReportRepository(new IOC.RankOneContext()), new PageScoreSerializer()));
         }
 
         public List<PageScoreNode> GetPageHierarchy(IEnumerable<IPublishedContent> nodeCollection, bool useCache)
