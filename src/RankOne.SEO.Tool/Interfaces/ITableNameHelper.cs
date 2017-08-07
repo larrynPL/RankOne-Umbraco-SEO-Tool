@@ -1,6 +1,4 @@
-﻿using RankOne.Models;
-
-namespace RankOne.Interfaces
+﻿namespace RankOne.Interfaces
 {
     public interface ITableNameHelper<T>
     {

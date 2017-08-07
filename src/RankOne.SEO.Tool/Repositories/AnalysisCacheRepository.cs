@@ -7,17 +7,17 @@ namespace RankOne.Repositories
     public class AnalysisCacheRepository : IAnalysisCacheRepository
     {
         private readonly INodeReportRepository _nodeReportRepository;
-        private readonly IPageScoreSerializer _javaScriptSerializer;
+        private readonly IPageScoreSerializer _pageScoreSerializer;
 
         public AnalysisCacheRepository(INodeReportRepository nodeReportRepository, IPageScoreSerializer pageScoreSerializer)
         {
             _nodeReportRepository = nodeReportRepository;
-            _javaScriptSerializer = pageScoreSerializer;
+            _pageScoreSerializer = pageScoreSerializer;
         }
 
         public void Save(int id, PageAnalysis pageAnalysis)
         {
-            var scoreReport = _javaScriptSerializer.Serialize(pageAnalysis.Score);
+            var scoreReport = _pageScoreSerializer.Serialize(pageAnalysis.Score);
 
             var nodeReport = new NodeReport
             {

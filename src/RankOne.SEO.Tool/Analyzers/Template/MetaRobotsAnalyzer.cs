@@ -3,9 +3,9 @@ using System.Linq;
 using HtmlAgilityPack;
 using RankOne.Attributes;
 using RankOne.ExtensionMethods;
-using RankOne.Helpers;
 using RankOne.Interfaces;
 using RankOne.Models;
+using Microsoft.Practices.ServiceLocation;
 
 namespace RankOne.Analyzers.Template
 {
@@ -18,11 +18,11 @@ namespace RankOne.Analyzers.Template
     [AnalyzerCategory(SummaryName = "Template", Alias = "metarobotsanalyzer")]
     public class MetaRobotsAnalyzer : BaseAnalyzer
     {
-        private readonly HtmlTagHelper _htmlTagHelper;
+        private readonly IHtmlTagHelper _htmlTagHelper;
 
         public MetaRobotsAnalyzer()
         {
-            _htmlTagHelper = new HtmlTagHelper();
+            _htmlTagHelper = ServiceLocator.Current.GetInstance<IHtmlTagHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

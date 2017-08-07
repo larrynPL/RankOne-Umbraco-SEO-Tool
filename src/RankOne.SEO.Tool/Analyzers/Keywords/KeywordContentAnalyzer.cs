@@ -1,21 +1,19 @@
-﻿using System.Linq;
-using System.Text.RegularExpressions;
+﻿using Microsoft.Practices.ServiceLocation;
 using RankOne.Attributes;
-using RankOne.ExtensionMethods;
-using RankOne.Helpers;
 using RankOne.Interfaces;
 using RankOne.Models;
+using System.Text.RegularExpressions;
 
 namespace RankOne.Analyzers.Keywords
 {
     [AnalyzerCategory(SummaryName = "Keywords", Alias = "keywordcontentanalyzer")]
     public class KeywordContentAnalyzer : BaseAnalyzer
     {
-        private readonly HtmlTagHelper _htmlTagHelper;
+        private readonly IHtmlTagHelper _htmlTagHelper;
 
         public KeywordContentAnalyzer()
         {
-            _htmlTagHelper = new HtmlTagHelper();
+            _htmlTagHelper = ServiceLocator.Current.GetInstance< IHtmlTagHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

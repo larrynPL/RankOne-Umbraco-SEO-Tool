@@ -5,7 +5,7 @@ using RankOne.Models;
 
 namespace RankOne.Interfaces
 {
-    public interface IDefintionHelper
+    public interface IDefinitionHelper
     {
         IEnumerable<SummaryDefinition> GetSummaryDefinitions();
         IEnumerable<SummaryDefinition> GetSummaryDefinitionsFromAssembly(Assembly assembly);

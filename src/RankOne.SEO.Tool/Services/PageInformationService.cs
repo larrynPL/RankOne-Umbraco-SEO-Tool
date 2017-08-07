@@ -10,14 +10,21 @@ namespace RankOne.Services
 {
     public class PageInformationService : IPageInformationService
     {
+        private readonly ITypedPublishedContentQuery _typedPublishedContentQuery;
+        private readonly IUmbracoComponentRenderer _umbracoComponentRenderer;
+
+        public PageInformationService(ITypedPublishedContentQuery typedPublishedContentQuery, IUmbracoComponentRenderer umbracoComponentRenderer)
+        {
+            _typedPublishedContentQuery = typedPublishedContentQuery;
+            _umbracoComponentRenderer = umbracoComponentRenderer;
+        }
+
         public PageInformation GetpageInformation(int id)
         {
             var pageInformation = new PageInformation();
 
-            var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-
-            var content = umbracoHelper.TypedContent(id);
-            var htmlObject = umbracoHelper.RenderTemplate(id);
+            var content = _typedPublishedContentQuery.TypedContent(id);
+            var htmlObject = _umbracoComponentRenderer.RenderTemplate(id);
 
             var html = htmlObject.ToHtmlString();
 

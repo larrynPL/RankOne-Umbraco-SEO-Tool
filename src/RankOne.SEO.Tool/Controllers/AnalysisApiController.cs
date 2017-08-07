@@ -8,7 +8,6 @@ using Umbraco.Core.Logging;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
-using RankOne.IOC;
 
 namespace RankOne.Controllers
 {
@@ -16,12 +15,12 @@ namespace RankOne.Controllers
     public class AnalysisApiController : UmbracoAuthorizedApiController
     {
         private readonly IAnalyzeService _analyzeService;
-        private readonly UmbracoHelper _umbracoHelper;
+        private readonly ITypedPublishedContentQuery _typedPublishedContentQuery;
 
-        public AnalysisApiController(IAnalyzeService analyzeService)
+        public AnalysisApiController(IAnalyzeService analyzeService, ITypedPublishedContentQuery typedPublishedContentQuery)
         {
             _analyzeService = analyzeService;
-            _umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+            _typedPublishedContentQuery = typedPublishedContentQuery;
         }
 
         /// <summary>
@@ -39,7 +38,7 @@ namespace RankOne.Controllers
         {
             try
             {
-                var node = _umbracoHelper.TypedContent(id);
+                var node = _typedPublishedContentQuery.TypedContent(id);
                 return _analyzeService.CreateAnalysis(node, focusKeyword);
             }
             catch (MissingFieldException ex)

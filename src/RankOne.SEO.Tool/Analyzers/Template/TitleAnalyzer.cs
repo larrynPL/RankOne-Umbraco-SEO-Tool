@@ -1,6 +1,6 @@
 ﻿using HtmlAgilityPack;
+using Microsoft.Practices.ServiceLocation;
 using RankOne.Attributes;
-using RankOne.Helpers;
 using RankOne.Interfaces;
 using RankOne.Models;
 
@@ -22,10 +22,11 @@ namespace RankOne.Analyzers.Template
     [AnalyzerCategory(SummaryName = "Template", Alias = "titleanalyzer")]
     public class TitleAnalyzer : BaseAnalyzer
     {
-        private readonly HtmlTagHelper _htmlTagHelper;
+        private readonly IHtmlTagHelper _htmlTagHelper;
+
         public TitleAnalyzer()
         {
-            _htmlTagHelper = new HtmlTagHelper();
+            _htmlTagHelper = ServiceLocator.Current.GetInstance<IHtmlTagHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

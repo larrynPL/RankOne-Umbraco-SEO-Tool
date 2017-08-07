@@ -2,8 +2,7 @@
 
 namespace RankOne.Interfaces
 {
-    public interface IPageScoreSerializer
+    public interface IPageScoreSerializer : IJavascriptSerializer<PageScore>
     {
-        string Serialize(PageScore score);
     }
 }

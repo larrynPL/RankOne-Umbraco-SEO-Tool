@@ -5,18 +5,18 @@ using RankOne.Attributes;
 using RankOne.ExtensionMethods;
 using RankOne.Interfaces;
 using RankOne.Models;
-using RankOne.Helpers;
+using Microsoft.Practices.ServiceLocation;
 
 namespace RankOne.Analyzers.Template
 {
     [AnalyzerCategory(SummaryName = "Template", Alias = "metakeywordanalyzer")]
     public class MetaKeywordAnalyzer : BaseAnalyzer
     {
-        private readonly HtmlTagHelper _htmlTagHelper;
+        private readonly IHtmlTagHelper _htmlTagHelper;
 
         public MetaKeywordAnalyzer()
         {
-            _htmlTagHelper = new HtmlTagHelper();
+            _htmlTagHelper = ServiceLocator.Current.GetInstance<IHtmlTagHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

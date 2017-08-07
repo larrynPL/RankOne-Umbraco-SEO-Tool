@@ -1,5 +1,5 @@
-﻿using RankOne.Attributes;
-using RankOne.Helpers;
+﻿using Microsoft.Practices.ServiceLocation;
+using RankOne.Attributes;
 using RankOne.Interfaces;
 using RankOne.Models;
 
@@ -8,13 +8,13 @@ namespace RankOne.Analyzers.Performance
     [AnalyzerCategory(SummaryName = "Performance", Alias = "htmlsizeanalyzer")]
     public class HtmlSizeAnalyzer : BaseAnalyzer
     {
-        private readonly ByteSizeHelper _byteSizeHelper;
+        private readonly IByteSizeHelper _byteSizeHelper;
 
         private static readonly int MaximumSizeInKb = 33792;   // 33 kb
 
         public HtmlSizeAnalyzer()
         {
-            _byteSizeHelper = new ByteSizeHelper();
+            _byteSizeHelper = ServiceLocator.Current.GetInstance<IByteSizeHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

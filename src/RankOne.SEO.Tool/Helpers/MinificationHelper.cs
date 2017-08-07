@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using RankOne.Interfaces;
 
 namespace RankOne.Helpers
 {
-    public class MinificationHelper
+    public class MinificationHelper : IMinificationHelper
     {
         public bool IsMinified(string content)
         {

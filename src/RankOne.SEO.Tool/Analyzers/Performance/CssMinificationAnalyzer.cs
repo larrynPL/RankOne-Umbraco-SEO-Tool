@@ -5,20 +5,20 @@ using System.Net;
 using HtmlAgilityPack;
 using RankOne.Attributes;
 using RankOne.ExtensionMethods;
-using RankOne.Helpers;
 using RankOne.Interfaces;
 using RankOne.Models;
+using Microsoft.Practices.ServiceLocation;
 
 namespace RankOne.Analyzers.Performance
 {
     [AnalyzerCategory(SummaryName = "Performance", Alias = "cssminificationanalyzer")]
     public class CssMinificationAnalyzer : BaseAnalyzer
     {
-        private readonly MinificationHelper _minificationHelper;
+        private readonly IMinificationHelper _minificationHelper;
 
         public CssMinificationAnalyzer()
         {
-            _minificationHelper = new MinificationHelper();
+            _minificationHelper = ServiceLocator.Current.GetInstance<IMinificationHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

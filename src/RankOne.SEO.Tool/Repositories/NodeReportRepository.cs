@@ -1,6 +1,5 @@
 ﻿using System;
 using RankOne.Models;
-using Umbraco.Web;
 using RankOne.IOC;
 using RankOne.Interfaces;
 

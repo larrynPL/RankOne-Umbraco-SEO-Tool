@@ -1,5 +1,5 @@
-﻿using RankOne.Attributes;
-using RankOne.Helpers;
+﻿using Microsoft.Practices.ServiceLocation;
+using RankOne.Attributes;
 using RankOne.Interfaces;
 using RankOne.Models;
 
@@ -8,11 +8,11 @@ namespace RankOne.Analyzers.Performance
     [AnalyzerCategory(SummaryName = "Performance", Alias = "gzipanalyzer")]
     public class GZipAnalyzer : BaseAnalyzer
     {
-        private readonly EncodingHelper _encodingHelper;
+        private readonly IEncodingHelper _encodingHelper;
 
         public GZipAnalyzer()
         {
-            _encodingHelper = new EncodingHelper();
+            _encodingHelper = ServiceLocator.Current.GetInstance<IEncodingHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

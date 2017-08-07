@@ -1,21 +1,19 @@
-﻿using System.Linq;
+﻿using Microsoft.Practices.ServiceLocation;
 using RankOne.Attributes;
-using RankOne.Helpers;
+using RankOne.Interfaces;
 using RankOne.Models;
+using System.Linq;
 
 namespace RankOne.Summaries
 {
     [Summary(Alias = "keywordanalyzer", SortOrder = 2)]
     public class KeywordsSummary : BaseSummary
     {
-        private readonly WordCounter _wordOccurenceHelper;
+        private readonly IWordCounter _wordOccurenceHelper;
 
-        public KeywordsSummary() : this(new WordCounter())
-        { }
-
-        public KeywordsSummary(WordCounter wordOccurenceService)
+        public KeywordsSummary()
         {
-            _wordOccurenceHelper = wordOccurenceService;
+            _wordOccurenceHelper = ServiceLocator.Current.GetInstance<IWordCounter>();
             Name = "Keywords";
         }
 

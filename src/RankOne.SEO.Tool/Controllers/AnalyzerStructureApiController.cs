@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RankOne.ExtensionMethods;
-using RankOne.Helpers;
 using RankOne.Interfaces;
 using RankOne.Models;
 using RankOne.Summaries;
@@ -13,14 +12,11 @@ namespace RankOne.Controllers
     [PluginController("RankOne")]
     public class AnalyzerStructureApiController : UmbracoAuthorizedApiController
     {
-        private readonly IDefintionHelper _defintionHelper;
+        private readonly IDefinitionHelper _defintionHelper;
 
-        public AnalyzerStructureApiController() : this(new DefinitionHelper())
-        { }
-
-        public AnalyzerStructureApiController(IDefintionHelper defintionHelper)
+        public AnalyzerStructureApiController(IDefinitionHelper definitionHelper)
         {
-            _defintionHelper = defintionHelper;
+            _defintionHelper = definitionHelper;
         }
 
         public IEnumerable<AnalyzerStructure> GetStructure()

@@ -1,29 +1,25 @@
-﻿using RankOne.Analyzers;
+﻿using Microsoft.Practices.ServiceLocation;
+using RankOne.Analyzers;
 using RankOne.Attributes;
 using RankOne.ExtensionMethods;
-using RankOne.Helpers;
 using RankOne.Interfaces;
 using RankOne.Models;
 using Umbraco.Core;
-using Umbraco.Core.Persistence;
 
 namespace RankOne.Summaries
 {
     public class BaseSummary
     {
+        private readonly IDefinitionHelper _definitionHelper;
+
         public HtmlResult HtmlResult { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
         public string FocusKeyword { get; set; }
 
-        private readonly IDefintionHelper _definitionHelper;
-
-        public BaseSummary() : this(new DefinitionHelper())
-        { }
-
-        public BaseSummary(IDefintionHelper defintionHelper)
+        public BaseSummary()
         {
-            _definitionHelper = defintionHelper;
+            _definitionHelper = ServiceLocator.Current.GetInstance<IDefinitionHelper>();
         }
 
         public virtual Analysis GetAnalysis()

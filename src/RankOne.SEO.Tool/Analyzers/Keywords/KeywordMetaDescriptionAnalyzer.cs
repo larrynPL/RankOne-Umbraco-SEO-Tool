@@ -2,20 +2,20 @@
 using System.Linq;
 using RankOne.Attributes;
 using RankOne.ExtensionMethods;
-using RankOne.Helpers;
 using RankOne.Interfaces;
 using RankOne.Models;
+using Microsoft.Practices.ServiceLocation;
 
 namespace RankOne.Analyzers.Keywords
 {
     [AnalyzerCategory(SummaryName = "Keywords", Alias = "keywordmetadescriptionanalyzer")]
     public class KeywordMetaDescriptionAnalyzer : BaseAnalyzer
     {
-        private readonly HtmlTagHelper _htmlTagHelper;
+        private readonly IHtmlTagHelper _htmlTagHelper;
 
         public KeywordMetaDescriptionAnalyzer()
         {
-            _htmlTagHelper = new HtmlTagHelper();
+            _htmlTagHelper = ServiceLocator.Current.GetInstance<IHtmlTagHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

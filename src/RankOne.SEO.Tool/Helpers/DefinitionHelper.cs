@@ -9,7 +9,7 @@ using RankOne.Models;
 
 namespace RankOne.Helpers
 {
-    public class DefinitionHelper : IDefintionHelper
+    public class DefinitionHelper : IDefinitionHelper
     {
         private IEnumerable<Assembly> _assemblies;
 
@@ -20,7 +20,7 @@ namespace RankOne.Helpers
                 if (_assemblies == null)
                 {
                     var currentAssembly = Assembly.GetExecutingAssembly();
-                    _assemblies = new List<Assembly> {currentAssembly};
+                    _assemblies = new List<Assembly> { currentAssembly };
                 }
                 return _assemblies;
             }

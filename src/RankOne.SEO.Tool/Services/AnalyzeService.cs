@@ -1,22 +1,20 @@
-﻿using System;
-using RankOne.Helpers;
-using RankOne.Interfaces;
+﻿using RankOne.Interfaces;
 using RankOne.Models;
-using RankOne.Repositories;
+using System;
 using Umbraco.Core.Models;
 
 namespace RankOne.Services
 {
     public class AnalyzeService : IAnalyzeService
     {
-        private readonly FocusKeywordHelper _focusKeywordHelper;
-        private readonly PageAnalysisService _pageAnalysisService;
+        private readonly IFocusKeywordHelper _focusKeywordHelper;
+        private readonly IPageAnalysisService _pageAnalysisService;
         private readonly IAnalysisCacheRepository _analysisCacheService;
 
-        public AnalyzeService(IAnalysisCacheRepository analysisCacheRepository)
+        public AnalyzeService(IFocusKeywordHelper focusKeywordHelper, IPageAnalysisService pageAnalysisService, IAnalysisCacheRepository analysisCacheRepository)
         {
-            _focusKeywordHelper = new FocusKeywordHelper();
-            _pageAnalysisService = new PageAnalysisService();
+            _focusKeywordHelper = focusKeywordHelper;
+            _pageAnalysisService = pageAnalysisService;
             _analysisCacheService = analysisCacheRepository;
         }
 

@@ -1,35 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using HtmlAgilityPack;
-using RankOne.ExtensionMethods;
-using RankOne.Helpers;
+﻿using RankOne.ExtensionMethods;
+using RankOne.Interfaces;
 using RankOne.Models;
 using RankOne.Summaries;
+using System.Net;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace RankOne.Services
 {
-    public class PageAnalysisService
-    {
-        
-        private readonly ScoreService _scoreService;
+    public class PageAnalysisService : IPageAnalysisService
+    {       
+        private readonly IScoreService _scoreService;
+        private readonly IDefinitionHelper _definitionHelper;
+        private readonly IHtmlHelper _htmlHelper;
+        private readonly IByteSizeHelper _byteSizeHelper;
 
-        private readonly DefinitionHelper _reflectionService;
-        private readonly HtmlHelper _htmlHelper;
-        private readonly ByteSizeHelper _byteSizeHelper;
-
-        public PageAnalysisService()
+        public PageAnalysisService(IScoreService scoreService, IDefinitionHelper definitionHelper, IHtmlHelper htmlHelper, IByteSizeHelper byteSizeHelper)
         {
-            _scoreService = new ScoreService();
-
-            _reflectionService = new DefinitionHelper();
-            _htmlHelper = new HtmlHelper();     
-            _byteSizeHelper = new ByteSizeHelper();     
+            _scoreService = scoreService;
+            _definitionHelper = definitionHelper;
+            _htmlHelper = htmlHelper;     
+            _byteSizeHelper = byteSizeHelper;     
         }
 
         public PageAnalysis CreatePageAnalysis(IPublishedContent node, string focusKeyword)
@@ -60,7 +51,7 @@ namespace RankOne.Services
         private void SetAnalyzerResults(PageAnalysis pageAnalysis, HtmlResult html)
         {
             // Get all types marked with the Summary attribute
-            var summaryDefinitions = _reflectionService.GetSummaryDefinitions();
+            var summaryDefinitions = _definitionHelper.GetSummaryDefinitions();
 
             // Instantiate the types and retrieve te results
             foreach (var summaryDefinition in summaryDefinitions)

@@ -3,10 +3,11 @@ using System.Linq;
 using HtmlAgilityPack;
 using RankOne.ExtensionMethods;
 using RankOne.Models;
+using RankOne.Interfaces;
 
 namespace RankOne.Helpers
 {
-    public class HtmlTagHelper
+    public class HtmlTagHelper : IHtmlTagHelper
     {
         public HtmlNode GetHeadTag(HtmlNode document, AnalyzeResult result)
         {
