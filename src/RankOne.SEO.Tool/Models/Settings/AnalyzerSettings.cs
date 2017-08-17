@@ -7,6 +7,7 @@ namespace RankOne.Models.Settings
     {
         [XmlAttribute(AttributeName = "Alias")]
         public string Alias { get; set; }
+
         [XmlAttribute(AttributeName = "Type")]
         public string Type { get; set; }
     }

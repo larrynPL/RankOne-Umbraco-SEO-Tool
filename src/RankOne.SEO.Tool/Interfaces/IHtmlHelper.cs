@@ -6,6 +6,7 @@ namespace RankOne.Interfaces
     public interface IHtmlHelper
     {
         string GetTemplateHtml(IPublishedContent node);
+
         HtmlResult GetHtmlResult(string htmlString);
     }
 }

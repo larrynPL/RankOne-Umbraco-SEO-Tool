@@ -13,7 +13,7 @@ namespace RankOne.Analyzers.Keywords
 
         public KeywordContentAnalyzer()
         {
-            _htmlTagHelper = ServiceLocator.Current.GetInstance< IHtmlTagHelper>();
+            _htmlTagHelper = ServiceLocator.Current.GetInstance<IHtmlTagHelper>();
         }
 
         public override AnalyzeResult Analyse(IPageData pageData)

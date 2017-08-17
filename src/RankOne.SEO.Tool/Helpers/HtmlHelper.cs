@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
+using RankOne.Interfaces;
 using RankOne.Models;
 using Umbraco.Core.Models;
-using RankOne.Interfaces;
 
 namespace RankOne.Helpers
 {

@@ -6,6 +6,7 @@ namespace RankOne.Interfaces
     public interface IDashboardDataService
     {
         void Initialize();
+
         IEnumerable<PageScoreNode> GetHierarchy(bool useCache = true);
     }
 }
