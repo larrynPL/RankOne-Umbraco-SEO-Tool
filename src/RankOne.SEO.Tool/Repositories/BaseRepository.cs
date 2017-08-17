@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
 using RankOne.Helpers;
 using RankOne.Interfaces;
+using RankOne.IOC;
+using System.Collections.Generic;
+using System.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
-using RankOne.IOC;
 
 namespace RankOne.Repositories
 {

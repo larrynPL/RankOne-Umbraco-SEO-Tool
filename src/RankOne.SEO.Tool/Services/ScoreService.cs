@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using RankOne.Models;
 using RankOne.Interfaces;
+using RankOne.Models;
+using System.Linq;
 
 namespace RankOne.Services
 {

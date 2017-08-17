@@ -1,6 +1,6 @@
-﻿using Umbraco.Core.Models;
-using Umbraco.Web;
 using RankOne.Interfaces;
+using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace RankOne.Helpers
 {

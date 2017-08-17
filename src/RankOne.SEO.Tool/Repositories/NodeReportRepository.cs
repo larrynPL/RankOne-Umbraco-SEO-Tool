@@ -2,6 +2,7 @@
 using RankOne.Models;
 using RankOne.IOC;
 using RankOne.Interfaces;
+using Umbraco.Web;
 
 namespace RankOne.Repositories
 {

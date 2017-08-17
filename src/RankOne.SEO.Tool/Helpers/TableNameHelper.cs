@@ -1,5 +1,5 @@
-﻿using System;
 using RankOne.Interfaces;
+using System;
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
 

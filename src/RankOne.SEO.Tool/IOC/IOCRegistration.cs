@@ -35,7 +35,6 @@ namespace RankOne.Eventhandlers
 
             // Helpers
             builder.RegisterType<ByteSizeHelper>().As<IByteSizeHelper>();
-            builder.RegisterType<DefinitionHelper>().As<IDefinitionHelper>();
             builder.RegisterType<EncodingHelper>().As<IEncodingHelper>();
             builder.RegisterType<FocusKeywordHelper>().As<IFocusKeywordHelper>();
             builder.RegisterType<Helpers.HtmlHelper>().As<IHtmlHelper>();

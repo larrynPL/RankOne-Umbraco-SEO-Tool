@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
+using Microsoft.Practices.ServiceLocation;
 using RankOne.Attributes;
 using RankOne.ExtensionMethods;
 using RankOne.Interfaces;
 using RankOne.Models;
-using Microsoft.Practices.ServiceLocation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace RankOne.Analyzers.Performance
 {

@@ -1,48 +1,33 @@
-﻿using Microsoft.Practices.ServiceLocation;
-using RankOne.Analyzers;
-using RankOne.Attributes;
-using RankOne.ExtensionMethods;
 using RankOne.Interfaces;
 using RankOne.Models;
-using Umbraco.Core;
+using System.Collections.Generic;
 
 namespace RankOne.Summaries
 {
-    public class BaseSummary
+    public class BaseSummary : ISummary
     {
-        private readonly IDefinitionHelper _definitionHelper;
-
         public HtmlResult HtmlResult { get; set; }
         public string Name { get; set; }
+        public string Alias { get; set; }
         public string Url { get; set; }
         public string FocusKeyword { get; set; }
-
-        public BaseSummary()
-        {
-            _definitionHelper = ServiceLocator.Current.GetInstance<IDefinitionHelper>();
-        }
+        public IEnumerable<IAnalyzer> Analyzers { get; set; }
 
         public virtual Analysis GetAnalysis()
         {
             var analysis = new Analysis();
-            var types = _definitionHelper.GetAllAnalyzerTypesForSummary(Name);
-
-            foreach (var type in types)
+            foreach (var analyzer in Analyzers)
             {
-                var instance = type.GetInstance<BaseAnalyzer>();
+                var result = GetResultFromAnalyzer(analyzer);
 
-                var analyzerCategory = type.FirstAttribute<AnalyzerCategory>();
-
-                var result = GetResultFromAnalyzer(instance);
-
-                result.Alias = analyzerCategory.Alias;
+                result.Alias = analyzer.Alias;
                 analysis.Results.Add(result);
             }
 
             return analysis;
         }
 
-        private AnalyzeResult GetResultFromAnalyzer(BaseAnalyzer baseAnalyzerInstance)
+        private AnalyzeResult GetResultFromAnalyzer(IAnalyzer analyzer)
         {
             var pageData = new PageData
             {
@@ -50,7 +35,7 @@ namespace RankOne.Summaries
                 Focuskeyword = FocusKeyword,
                 Url = Url
             };
-            return baseAnalyzerInstance.Analyse(pageData);
+            return analyzer.Analyse(pageData);
         }
     }
 }

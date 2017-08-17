@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.ServiceLocation;
+using Microsoft.Practices.ServiceLocation;
 using RankOne.Attributes;
 using RankOne.Interfaces;
 using RankOne.Models;
@@ -42,7 +42,6 @@ namespace RankOne.Analyzers.Keywords
                     resultRule.Tokens.Add(matches.Count.ToString());
                     result.ResultRules.Add(resultRule);
                 }
-
             }
 
             return result;

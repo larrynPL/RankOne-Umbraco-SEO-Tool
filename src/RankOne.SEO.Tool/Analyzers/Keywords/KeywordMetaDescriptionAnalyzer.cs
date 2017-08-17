@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using Microsoft.Practices.ServiceLocation;
 using RankOne.Attributes;
 using RankOne.ExtensionMethods;
 using RankOne.Interfaces;
 using RankOne.Models;
-using Microsoft.Practices.ServiceLocation;
+using System;
+using System.Linq;
 
 namespace RankOne.Analyzers.Keywords
 {
