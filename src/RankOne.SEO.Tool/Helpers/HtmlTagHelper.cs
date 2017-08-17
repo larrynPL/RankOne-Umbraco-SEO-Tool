@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using RankOne.ExtensionMethods;
-using RankOne.Models;
 using RankOne.Interfaces;
+using RankOne.Models;
 using System.Collections.Generic;
 using System.Linq;
 

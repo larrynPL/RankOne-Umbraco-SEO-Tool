@@ -1,15 +1,14 @@
-﻿using System;
-using RankOne.Models;
+﻿using RankOne.Interfaces;
 using RankOne.IOC;
-using RankOne.Interfaces;
-using Umbraco.Web;
+using RankOne.Models;
+using System;
 
 namespace RankOne.Repositories
 {
     public class NodeReportRepository : BaseRepository<NodeReport>, INodeReportRepository
     {
         public NodeReportRepository(RankOneContext rankOneContext) : base(rankOneContext)
-        {}
+        { }
 
         public override NodeReport Insert(NodeReport dbEntity)
         {

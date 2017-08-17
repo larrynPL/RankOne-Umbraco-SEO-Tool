@@ -7,7 +7,7 @@ using Umbraco.Web;
 namespace RankOne.Services
 {
     public class PageAnalysisService : IPageAnalysisService
-    {       
+    {
         private readonly IScoreService _scoreService;
         private readonly IHtmlHelper _htmlHelper;
         private readonly IByteSizeHelper _byteSizeHelper;
@@ -16,7 +16,7 @@ namespace RankOne.Services
         public PageAnalysisService(IScoreService scoreService, IHtmlHelper htmlHelper, IByteSizeHelper byteSizeHelper, IConfigurationHelper configurationHelper)
         {
             _scoreService = scoreService;
-            _htmlHelper = htmlHelper;     
+            _htmlHelper = htmlHelper;
             _byteSizeHelper = byteSizeHelper;
             _configurationHelper = configurationHelper;
         }
